@@ -1,0 +1,1176 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"cur",
+				"curRule"
+			],
+			[
+				"has",
+				"has-success"
+			],
+			[
+				"pa",
+				"parent"
+			],
+			[
+				"v",
+				"val"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"rule",
+				"ruleMatch"
+			],
+			[
+				"par",
+				"parseRule"
+			],
+			[
+				"pro",
+				"prototype"
+			],
+			[
+				"b",
+				"brule_ip"
+			],
+			[
+				"pause",
+				"pause"
+			],
+			[
+				"life",
+				"lifeform_sel"
+			],
+			[
+				"clea",
+				"clearWorld"
+			],
+			[
+				"off",
+				"offsetY"
+			],
+			[
+				"of",
+				"offsetY"
+			],
+			[
+				"offse",
+				"offsetX"
+			],
+			[
+				"bi",
+				"bindLifeform"
+			],
+			[
+				"G",
+				"GOSPER_GLIDER_GUN"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"nu",
+				"numtagsBeginPat"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"num",
+				"num"
+			],
+			[
+				"hea",
+				"header"
+			],
+			[
+				"g",
+				"g"
+			],
+			[
+				"header",
+				"headerPat"
+			],
+			[
+				"st",
+				"strong	Tag"
+			],
+			[
+				"Pal",
+				"Palette"
+			],
+			[
+				"cel",
+				"cellColor"
+			],
+			[
+				"wor",
+				"world_ui"
+			],
+			[
+				"pal",
+				"palette_idx"
+			],
+			[
+				"ro",
+				"rotatePalette"
+			],
+			[
+				"P",
+				"Palettes"
+			],
+			[
+				"cell",
+				"cellColor"
+			],
+			[
+				"rul",
+				"rulename"
+			],
+			[
+				"set",
+				"setRule"
+			],
+			[
+				"ru",
+				"rule"
+			],
+			[
+				"rules",
+				"rules_sel"
+			],
+			[
+				"select",
+				"select2"
+			],
+			[
+				"Lifefor",
+				"Lifeforms"
+			],
+			[
+				"pau",
+				"pause"
+			],
+			[
+				"pen",
+				"pencil_btn"
+			],
+			[
+				"dra",
+				"dragging"
+			],
+			[
+				"dr",
+				"dragging"
+			],
+			[
+				"on",
+				"onMouseClick"
+			],
+			[
+				"can",
+				"canvasBox"
+			],
+			[
+				"grid",
+				"grid"
+			],
+			[
+				"rel",
+				"relMouseCoords"
+			],
+			[
+				"ge",
+				"generation"
+			],
+			[
+				"po",
+				"population"
+			],
+			[
+				"gr",
+				"grid"
+			],
+			[
+				"gri",
+				"grid_chk"
+			],
+			[
+				"sli",
+				"slider_values"
+			],
+			[
+				"fr",
+				"frameDelay"
+			],
+			[
+				"pr",
+				"prop"
+			],
+			[
+				"ste",
+				"step_btn"
+			],
+			[
+				"step",
+				"step_update"
+			],
+			[
+				"wo",
+				"world"
+			],
+			[
+				"get",
+				"get	Get Elements"
+			],
+			[
+				"line",
+				"lineWidth"
+			],
+			[
+				"sr",
+				"strokeStyle"
+			],
+			[
+				"str",
+				"strokeStyle"
+			],
+			[
+				"fill",
+				"fillStyle"
+			],
+			[
+				"x",
+				"x"
+			],
+			[
+				"fi",
+				"fill"
+			],
+			[
+				"fil",
+				"fillStyle"
+			],
+			[
+				"world",
+				"world_ui"
+			],
+			[
+				"worl",
+				"world"
+			],
+			[
+				"Life",
+				"Lifeform"
+			],
+			[
+				"aler",
+				"alert-danger"
+			],
+			[
+				"mem",
+				"memory_modal"
+			],
+			[
+				"func",
+				"function"
+			],
+			[
+				"opt",
+				"optimize"
+			],
+			[
+				"inpu",
+				"input_ui"
+			],
+			[
+				"in",
+				"input"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"ot",
+				"output_ui"
+			],
+			[
+				"state",
+				"state_ui"
+			],
+			[
+				"Stat",
+				"StateClass"
+			],
+			[
+				"Sta",
+				"StateClass"
+			],
+			[
+				"ale",
+				"alert-info"
+			],
+			[
+				"alert",
+				"alert-success"
+			],
+			[
+				"curS",
+				"curStateClass"
+			],
+			[
+				"noti",
+				"notify_ui"
+			],
+			[
+				"run",
+				"runtime"
+			],
+			[
+				"not",
+				"notify_ui"
+			],
+			[
+				"no",
+				"notify_ui"
+			],
+			[
+				"fo",
+				"font-family"
+			],
+			[
+				"op",
+				"optimize"
+			],
+			[
+				"re",
+				"resume_btn"
+			],
+			[
+				"sto",
+				"stop_btn"
+			],
+			[
+				"opti",
+				"optimize_chk"
+			],
+			[
+				"er",
+				"error_ui"
+			],
+			[
+				"out",
+				"output_ui"
+			],
+			[
+				"resu",
+				"resume"
+			],
+			[
+				"int",
+				"interpreter"
+			],
+			[
+				"R",
+				"RIGHT"
+			],
+			[
+				"o_",
+				"o_pc"
+			],
+			[
+				"LO",
+				"LOOP_END"
+			],
+			[
+				"L",
+				"LEFT"
+			],
+			[
+				"PR",
+				"PRINT"
+			],
+			[
+				"St",
+				"State"
+			],
+			[
+				"memo",
+				"memoryIdx"
+			],
+			[
+				"stop",
+				"stopButton"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"inp",
+				"inputUi"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"me",
+				"message"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"time",
+				"timeTaken"
+			],
+			[
+				"o",
+				"op"
+			],
+			[
+				"o_p",
+				"o_pc"
+			],
+			[
+				"matc",
+				"matchCount"
+			],
+			[
+				"rea",
+				"rearrangeY"
+			],
+			[
+				"tim",
+				"timeTaken"
+			],
+			[
+				"write",
+				"writeln"
+			],
+			[
+				"bri",
+				"bringToFront"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"i",
+				"input"
+			],
+			[
+				"up",
+				"update"
+			],
+			[
+				"sele",
+				"selectedSeats"
+			],
+			[
+				"selec",
+				"selectedSeats"
+			],
+			[
+				"add",
+				"addChild"
+			],
+			[
+				"bulk",
+				"bulkDeleteButton"
+			],
+			[
+				"Sea",
+				"SeatSwapButton"
+			],
+			[
+				"stude",
+				"student"
+			],
+			[
+				"stu",
+				"student"
+			],
+			[
+				"remov",
+				"removeStudent"
+			],
+			[
+				"Stude",
+				"Student"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "rle.js",
+			"settings":
+			{
+				"buffer_size": 2314,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 11911,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "life.js",
+			"settings":
+			{
+				"buffer_size": 23468,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/rahanand/Code/brainfucked/manager.js",
+			"settings":
+			{
+				"buffer_size": 8192,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/rahanand/Code/brainfucked/index.html",
+			"settings":
+			{
+				"buffer_size": 8543,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 444,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/style.css",
+			"settings":
+			{
+				"buffer_size": 264,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 187.0,
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"comm",
+				"Toggle Block Comment"
+			]
+		],
+		"width": 467.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/rahanand/Code/gameoflife/lifeforms/gliders_by_the_dozen.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/replicator.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/bomber_predecessor.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/queen_bee_loop.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/gosper_glider_gun.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/weekender_tagalong.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/dragon.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/snail.rle",
+		"/Users/rahanand/Code/gameoflife/lifeforms/dragon_flotillae.rle",
+		"/Users/rahanand/Code/brainfucked/manager.js",
+		"/Users/rahanand/Code/brainfucked/index.html",
+		"/Users/rahanand/Desktop/Flat-UI-master/CHANGELOG.md",
+		"/Users/rahanand/Desktop/Flat-UI-master/README.md",
+		"/Users/rahanand/Desktop/Flat-UI-master/index.html",
+		"/Users/rahanand/Desktop/Flat-UI-master/docs/assets/js/application.js",
+		"/Users/rahanand/Code/gameoflife/css/fontello.css",
+		"/Users/rahanand/Downloads/fontello-a28be4c2/css/fontello-embedded.css",
+		"/Users/rahanand/Downloads/fontello-a28be4c2/css/fontello-codes.css",
+		"/Users/rahanand/Downloads/fontello-a28be4c2/css/fontello.css",
+		"/Users/rahanand/Desktop/Flat-UI-master/bower.json",
+		"/Users/rahanand/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/rahanand/Code/brainfucked/README.md",
+		"/Users/rahanand/Code/brainfucked/examples/reverse.b",
+		"/Users/rahanand/Code/brainfucked/examples/bfinterpreter.b",
+		"/Users/rahanand/Code/brainfucked/brainfucked.js",
+		"/Users/rahanand/Desktop/test.cpp",
+		"/Users/rahanand/Desktop/seanpowell-Email-Boilerplate-c3465c0/email_lite.html",
+		"/Users/rahanand/Desktop/seanpowell-Email-Boilerplate-c3465c0/buildMail.html",
+		"/Users/rahanand/Code/brainfucked/examples/mandelbrot.b",
+		"/Users/rahanand/Code/brainfucked/examples/bsort.b",
+		"/Users/rahanand/Code/brainfucked/examples/helloworld.b",
+		"/Users/rahanand/Code/brainfucked/js/jquery-linedtextarea.js",
+		"/Users/rahanand/Dropbox/eternal-thinker/portraits/gallery/index.html",
+		"/Users/rahanand/Desktop/Web-tech/index.html",
+		"/Users/rahanand/Desktop/Web-tech/angular-index.html",
+		"/Users/rahanand/Code/brainfucked/worker.js",
+		"/Users/rahanand/Downloads/poole-master/.gitignore",
+		"/Volumes/Elements 36/Backup/Work/myFlash/On/Games/Tile matching/util.as",
+		"/Users/rahanand/Work/Tile matching/util.as",
+		"/Users/rahanand/Code/brainfucked/.gitignore",
+		"/Users/rahanand/Work/Classroom Shuffle/code/lib/Gender.as",
+		"/Users/rahanand/Cisco_work/LatticeTarBallCheck/ltctarballchk",
+		"/et_extra/Win_Desktop/examplecode/LL.c",
+		"/Users/rahanand/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/rahanand/Work/Classroom Shuffle/code/lib/MenuItem.as",
+		"/Users/rahanand/Work/Classroom Shuffle/code/classroom_shuffle/DOMDocument.xml",
+		"/Users/rahanand/Work/Classroom Shuffle/code/lib/StudentMenuItem.as",
+		"/Users/rahanand/Work/Classroom Shuffle/code/lib/Student.as",
+		"/Users/rahanand/Work/Classroom Shuffle/code/lib/SolutionNode.as",
+		"/Users/rahanand/Desktop/Angular/index.html",
+		"/Users/rahanand/Library/Caches/TemporaryItems/Outlook Temp/stargen_lattice_NemoCall/init-NEMO+z5",
+		"/Users/rahanand/Library/Caches/TemporaryItems/Outlook Temp/stargen_lattice_NemoCall/NEMOCALL",
+		"/Users/rahanand/Library/Application Support/Sublime Text 2/Packages/Color Scheme - Default/Monokai.tmTheme",
+		"/Users/rahanand/Desktop/dungeon arena/tackle_warcry.js",
+		"/Users/rahanand/Desktop/dungeon arena/ogres2.js",
+		"/Users/rahanand/Desktop/dungeon arena/ogres.js",
+		"/Users/rahanand/Desktop/dungeon arena/humans.js",
+		"/Users/rahanand/Work/Classroom Shuffle/code/humans.js",
+		"/Users/rahanand/Desktop/dungeon arena/win3_top5_stomp_and_jump_no_leave_base.js",
+		"/Users/rahanand/Desktop/dungeon arena/win3_top5_stomp_and_jump_minions_attack_hero_leave_single_archer.js",
+		"/Users/rahanand/Desktop/dungeon arena/win3_top5_stomp_and_jump_minions_attack_hero.js",
+		"/Users/rahanand/Desktop/dungeon arena/win3_top5_stomp_and_jump 2.js",
+		"/Users/rahanand/Desktop/dungeon arena/win3_top5_stomp_and_jump 3.js",
+		"/Users/rahanand/Desktop/dungeon arena/current.js",
+		"/Users/rahanand/Desktop/dungeon arena/win1_attack_hero.js",
+		"/Users/rahanand/Desktop/dungeon arena/first.js",
+		"/Users/rahanand/Work/Classroom Shuffle/code/lib/Enum.as",
+		"/Users/rahanand/Work/Classroom Shuffle/code/lib/Game.as",
+		"/Users/rahanand/Dropbox/cShuffle/init plans.txt",
+		"/Users/rahanand/Dropbox/cShuffle/possible  ideas.html",
+		"/Users/rahanand/Work/Classroom Shuffle/code/SwfLoader.as",
+		"/Users/rahanand/Desktop/sandbox/eofbreak.py",
+		"/Users/rahanand/Desktop/sandbox/dummy1.py",
+		"/Users/rahanand/Work/Classroom Shuffle/code/eofbreak.py",
+		"/Users/rahanand/Work/Classroom Shuffle/code/data/levels.xml",
+		"/Users/rahanand/Dropbox/cShuffle/possible  ideas.txt",
+		"/Users/rahanand/Desktop/coursera/sdn/module2/programming-assignment-2/CustomTopo.py",
+		"/Users/rahanand/Desktop/coursera/sdn/module2/programming-assignment-2/example.py",
+		"/et_extra/Win_Desktop/examplecode/ZeroElementLL.py",
+		"/et_extra/Win_Desktop/examplecode/XrightBST.py",
+		"/Users/rahanand/Work/Classroom Shuffle/code/ClassroomShuffle.as",
+		"/et/Cisco_work/commands.txt"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"this.rule",
+			"setrule",
+			"rule",
+			";\n",
+			"gosper",
+			"foreach",
+			"Palette",
+			"clearWo",
+			"get(",
+			"this.B",
+			"generation",
+			"optimize_chk",
+			"y.*cols",
+			"y.*rows",
+			"slider",
+			"jquery",
+			"x",
+			"y",
+			"x",
+			"y",
+			"[c",
+			"[r",
+			"curnotifyclass",
+			"StateClass",
+			"fin",
+			"notify_ui",
+			"FINISHED",
+			"_ui",
+			"postmessage",
+			"halt",
+			"op",
+			"State\\.",
+			"State.",
+			"State\\.",
+			"'\\+'",
+			"\\'+\\'",
+			"'+'",
+			"showerror",
+			"print",
+			"postMessage",
+			"outputui",
+			"1",
+			"rand",
+			"gravitify",
+			"rearrangeY",
+			"$",
+			"trace",
+			"onMotion",
+			"zordertiles\\(",
+			"zordertiles(",
+			"zordertiles",
+			"bringtofront",
+			"zordertiles",
+			"bringToFront",
+			"rand",
+			"@",
+			"initlevel",
+			"gamexml",
+			"personalityStudentsRest",
+			"selectStude",
+			"updateActionUi",
+			"rootmc.",
+			"rootmc",
+			"selectStudent",
+			"selectedSeats",
+			"disable",
+			"overstate",
+			"studentSelectButton",
+			"StudentCloseButton",
+			"restoreOverState",
+			"showcontrols",
+			"buttonMode",
+			"new solutionno",
+			"new seat",
+			"seat",
+			"tableY",
+			"traits",
+			"regex",
+			"initlevel",
+			"trace",
+			"os x",
+			"osx",
+			"scroll_pas",
+			"hintsNav",
+			"hints",
+			"hint",
+			"initui",
+			"hints",
+			"stage",
+			"showInfo",
+			"description",
+			"\"ran",
+			"initStu",
+			"extendPStudents",
+			"Rest",
+			"trace",
+			"initprototy",
+			"46",
+			"prev p co",
+			"skin",
+			"BOY",
+			"PREPPY",
+			"Number.*@",
+			"int.*@",
+			"@",
+			"XML",
+			"pstudentsc",
+			"trace.*name",
+			"pStudentsC",
+			"randZe",
+			"personalityStudents",
+			"initperso",
+			"hasownprop",
+			"initperso",
+			"filtersMatch",
+			"excludeType",
+			"trace",
+			"string",
+			"exclude",
+			" or",
+			"@",
+			"variables",
+			"@",
+			"XML",
+			"@",
+			"studentInfo",
+			"ngp",
+			"infyloop"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"population",
+			"y",
+			"x",
+			"y",
+			"x",
+			"[y",
+			"[x",
+			"2",
+			"\\",
+			"\\$",
+			"",
+			"hintsBox",
+			"Logger.echo",
+			"GIRL",
+			"REBEL",
+			"ATHLETE",
+			"NERD",
+			"smi",
+			"tableThumbnail"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "rle.js",
+					"settings":
+					{
+						"buffer_size": 2314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								148,
+								148
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 11911,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1317,
+								1317
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "life.js",
+					"settings":
+					{
+						"buffer_size": 23468,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8455,
+								8455
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 3129.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/rahanand/Code/brainfucked/manager.js",
+					"settings":
+					{
+						"buffer_size": 8192,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1616,
+								1616
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 413.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/rahanand/Code/brainfucked/index.html",
+					"settings":
+					{
+						"buffer_size": 8543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7701,
+								7654
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2182.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "README.md",
+					"settings":
+					{
+						"buffer_size": 444,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								331,
+								331
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/style.css",
+					"settings":
+					{
+						"buffer_size": 264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								164,
+								164
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"man",
+				"/Users/rahanand/Code/brainfucked/manager.js"
+			],
+			[
+				"gen",
+				"lib/Gender.as"
+			],
+			[
+				"gam",
+				"lib/Game.as"
+			],
+			[
+				"game",
+				"data/game.xml"
+			],
+			[
+				"stude",
+				"lib/StudentMenuItem.as"
+			],
+			[
+				"boy",
+				"lib/Boy.as"
+			],
+			[
+				"solu",
+				"lib/SolutionNode.as"
+			],
+			[
+				"sea",
+				"lib/Seat.as"
+			],
+			[
+				"stu",
+				"lib/Student.as"
+			],
+			[
+				"men",
+				"lib/MenuItem.as"
+			],
+			[
+				"ty",
+				"lib/TypeMenuItem.as"
+			],
+			[
+				"studentmen",
+				"lib/StudentMenuItem.as"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/Users/rahanand/Work/Classroom Shuffle/code/this.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
