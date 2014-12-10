@@ -13,11 +13,12 @@ $(document).ready(function() {
 
     /* ================== Life class ================ */
     function Cell () {
-        this.age = 0; // Determines alpha of color
+        this.age = 0; // Determines generation color
         this.alive = false;
+        this.color = -1;
     }
     
-    function Life (rows, cols, rule) {
+    function Life (rows, cols, rule, nColors) {
         if (rule) {
             this.B = rule.B; // B(orn)
             this.S = rule.S; // S(tay alive)
@@ -25,9 +26,10 @@ $(document).ready(function() {
             this.B = [3]; // B(orn)
             this.S = [2, 3]; // S(tay alive)
         }
-        
         this.rows = rows;
         this.cols = cols;
+        this.nColors = nColors;
+
         this.world = [];
         this.world2 = [];
         this.generation = 0;
@@ -53,14 +55,16 @@ $(document).ready(function() {
         return this.world[x][y];
     }
 
-    Life.prototype.set = function (x, y) {
+    Life.prototype.set = function (x, y, color) {
         this.world[x][y].alive = true;
         this.world[x][y].age = 1;
+        this.world[x][y].color = color;
     }
 
     Life.prototype.unset = function (x, y) {
         this.world[x][y].alive = false;
         this.world[x][y].age = -1;
+        this.world[x][y].color = -1;
     }
 
     Life.prototype.setRule = function (rule) {
@@ -79,7 +83,10 @@ $(document).ready(function() {
     }
 
     Life.prototype.getNeighbourCount = function (x, y) {
-        var ncount = 0;
+        var ncounts = [];
+        for (var i = 0; i < this.nColors; ++i) {
+            ncounts[i] = 0;
+        }
 
         // Bounded grid
         /* // Left
@@ -98,16 +105,16 @@ $(document).ready(function() {
         var x1 = (x > 0)? x: this.cols;
         var y1 = (y > 0)? y: this.rows;
         // Left
-        if (this.world[x1-1][y].alive) { ++ncount; }
-        if (this.world[x1-1][y1-1].alive) { ++ncount; }
-        if (this.world[x1-1][(y+1) % this.rows].alive) { ++ncount; }
+        if (this.world[x1-1][y].alive) { ++ncounts[this.world[x1-1][y].color]; }
+        if (this.world[x1-1][y1-1].alive) { ++ncounts[this.world[x1-1][y1-1].color]; }
+        if (this.world[x1-1][(y+1) % this.rows].alive) { ++ncounts[this.world[x1-1][(y+1) % this.rows].color]; }
         // Adj
-        if (this.world[x][y1-1].alive) { ++ncount; }
-        if (this.world[x][(y+1) % this.rows].alive) { ++ncount; }
+        if (this.world[x][y1-1].alive) { ++ncounts[this.world[x][y1-1].color]; }
+        if (this.world[x][(y+1) % this.rows].alive) { ++ncounts[this.world[x][(y+1) % this.rows].color]; }
         // Right
-        if (this.world[(x+1) % this.cols][y].alive) { ++ncount; }
-        if (this.world[(x+1) % this.cols][y1-1].alive) { ++ncount; }
-        if (this.world[(x+1) % this.cols][(y+1) % this.rows].alive) { ++ncount; }
+        if (this.world[(x+1) % this.cols][y].alive) { ++ncounts[this.world[(x+1) % this.cols][y].color]; }
+        if (this.world[(x+1) % this.cols][y1-1].alive) { ++ncount[this.world[(x+1) % this.cols][y1-1].color]; }
+        if (this.world[(x+1) % this.cols][(y+1) % this.rows].alive) { ++ncounts[this.world[(x+1) % this.cols][(y+1) % this.rows].color]; }
 
         return ncount;
     }
@@ -116,26 +123,41 @@ $(document).ready(function() {
         this.population = 0
         for (var x = 0; x < this.cols; ++x) {
             for (var y = 0; y < this.rows; ++y) {
-                var ncount = this.getNeighbourCount(x, y);
+                var ncounts = this.getNeighbourCount(x, y);
                 if (this.world[x][y].alive) {
-                    var find = this.S.indexOf(ncount);
-                    if (find != -1) {
-                        this.world2[x][y].alive = true; 
-                        this.population++;
+                    var max = -1, candidates = [];
+                    for (var i = 0; i < this.nColors; ++i) {
+                        var ncount = ncounts[i];
+                        if (S.indexOf(ncount) != -1 && ncount >= max) {
+                            candidates.push( {type: i, count: ncount} );
+                        }
+                    }
+                    if (candidates.length > 0) {
+                        // Choose live color
+                        //this.world2[x][y].alive = true; 
+                        //this.population++;
                     } else {
                         this.world2[x][y].alive = false;
+                        this.world2[x][y].color = -1;
                         this.world2[x][y].age = -1; // Just died
                     }
                 }
                 else {
-                    var find = this.B.indexOf(ncount);
-                    if (find != -1) {
-                        this.world2[x][y].alive = true;
-                        this.world2[x][y].age = 1; // It's alive!
-                        this.population++;
-                    } 
-                    else {
+                    var max = -1, candidates = [];
+                    for (var i = 0; i < this.nColors; ++i) {
+                        var ncount = ncounts[i];
+                        if (B.indexOf(ncount) != -1 && ncount >= max) {
+                            candidates.push( {type: i, count: ncount} );
+                        }
+                    }
+                    if (candidates.length > 0) {
+                        // Choose live color
+                        //this.world2[x][y].alive = true;
+                        //this.world2[x][y].age = 1; // It's alive!
+                        //this.population++;
+                    } else {
                         this.world2[x][y].alive = false;
+                        this.world2[x][y].color = -1;
                         var age = this.world[x][y].age;
                         if (age < 0 && age > -5) { // Dead and rotting
                             age--; 
@@ -143,6 +165,7 @@ $(document).ready(function() {
                         this.world2[x][y].age = age;
                     }
                 }
+
             }
         }
         
