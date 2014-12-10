@@ -33,7 +33,10 @@ $(document).ready(function() {
         this.world = [];
         this.world2 = [];
         this.generation = 0;
-        this.population = 0;
+        this.population = [];
+        for (var i = 0; i < this.nColors; ++i) {
+            this.population[i] = 0;
+        }
 
         // Actions
         this.init();
@@ -120,7 +123,9 @@ $(document).ready(function() {
     }
 
     Life.prototype.step = function () {
-        this.population = 0
+        for (var i = 0; i < this.population.length; ++i) {
+            this.population[i] = 0;
+        }
         for (var x = 0; x < this.cols; ++x) {
             for (var y = 0; y < this.rows; ++y) {
                 var ncounts = this.getNeighbourCount(x, y);
@@ -128,14 +133,23 @@ $(document).ready(function() {
                     var max = -1, candidates = [];
                     for (var i = 0; i < this.nColors; ++i) {
                         var ncount = ncounts[i];
-                        if (S.indexOf(ncount) != -1 && ncount >= max) {
-                            candidates.push( {type: i, count: ncount} );
+                        if (S.indexOf(ncount) != -1) {
+                            if (ncount > max) {
+                                candidates = [];
+                                candidates.push( {color: i, count: ncount} );
+                            }
+                            else if (ncount == max) {
+                                candidates.push( {color: i, count: ncount} );
+                            }
                         }
                     }
                     if (candidates.length > 0) {
-                        // Choose live color
-                        //this.world2[x][y].alive = true; 
-                        //this.population++;
+                        var r = Math.floor(Math.random() * candidates.length);
+                        var color = candidates[r].color;
+                        this.world2[x][y].alive = true;
+                        this.world2[x][y].color = color;
+                        this.world2[x][y].age = 1;
+                        this.population[color]++;
                     } else {
                         this.world2[x][y].alive = false;
                         this.world2[x][y].color = -1;
@@ -146,15 +160,23 @@ $(document).ready(function() {
                     var max = -1, candidates = [];
                     for (var i = 0; i < this.nColors; ++i) {
                         var ncount = ncounts[i];
-                        if (B.indexOf(ncount) != -1 && ncount >= max) {
-                            candidates.push( {type: i, count: ncount} );
+                        if (B.indexOf(ncount) != -1) {
+                            if (ncount > max) {
+                                candidates = [];
+                                candidates.push( {color: i, count: ncount} );
+                            }
+                            else if (ncount == max) {
+                                candidates.push( {color: i, count: ncount} );
+                            }
                         }
                     }
                     if (candidates.length > 0) {
-                        // Choose live color
-                        //this.world2[x][y].alive = true;
-                        //this.world2[x][y].age = 1; // It's alive!
-                        //this.population++;
+                        var r = Math.floor(Math.random() * candidates.length);
+                        var color = candidates[r].color;
+                        this.world2[x][y].alive = true;
+                        this.world2[x][y].color = color;
+                        this.world2[x][y].age = 1;
+                        this.population[color]++;
                     } else {
                         this.world2[x][y].alive = false;
                         this.world2[x][y].color = -1;
