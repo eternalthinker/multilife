@@ -116,10 +116,10 @@ $(document).ready(function() {
         if (this.world[x][(y+1) % this.rows].alive) { ++ncounts[this.world[x][(y+1) % this.rows].color]; }
         // Right
         if (this.world[(x+1) % this.cols][y].alive) { ++ncounts[this.world[(x+1) % this.cols][y].color]; }
-        if (this.world[(x+1) % this.cols][y1-1].alive) { ++ncount[this.world[(x+1) % this.cols][y1-1].color]; }
+        if (this.world[(x+1) % this.cols][y1-1].alive) { ++ncounts[this.world[(x+1) % this.cols][y1-1].color]; }
         if (this.world[(x+1) % this.cols][(y+1) % this.rows].alive) { ++ncounts[this.world[(x+1) % this.cols][(y+1) % this.rows].color]; }
 
-        return ncount;
+        return ncounts;
     }
 
     Life.prototype.step = function () {
@@ -133,9 +133,10 @@ $(document).ready(function() {
                     var max = -1, candidates = [];
                     for (var i = 0; i < this.nColors; ++i) {
                         var ncount = ncounts[i];
-                        if (S.indexOf(ncount) != -1) {
+                        if (this.S.indexOf(ncount) != -1) {
                             if (ncount > max) {
                                 candidates = [];
+                                max = ncount;
                                 candidates.push( {color: i, count: ncount} );
                             }
                             else if (ncount == max) {
@@ -160,9 +161,10 @@ $(document).ready(function() {
                     var max = -1, candidates = [];
                     for (var i = 0; i < this.nColors; ++i) {
                         var ncount = ncounts[i];
-                        if (B.indexOf(ncount) != -1) {
+                        if (this.B.indexOf(ncount) != -1) {
                             if (ncount > max) {
                                 candidates = [];
+                                max = ncount;
                                 candidates.push( {color: i, count: ncount} );
                             }
                             else if (ncount == max) {
@@ -175,7 +177,7 @@ $(document).ready(function() {
                         var color = candidates[r].color;
                         this.world2[x][y].alive = true;
                         this.world2[x][y].color = color;
-                        this.world2[x][y].age = 1;
+                        this.world2[x][y].age = 1; // It's alive!
                         this.population[color]++;
                     } else {
                         this.world2[x][y].alive = false;
@@ -203,8 +205,12 @@ $(document).ready(function() {
         var dy = lifeFormData.offsetY;
         this.population = 0;
         lifeFormData.points.forEach(function(point) {
-            this.world[point[0] + dx][point[1] + dy].alive = true;
-            this.population++;
+            var x = point[0] + dx;
+            var y = point[1] + dy;
+            this.world[x][y].alive = true;
+            this.world[x][y].age = 1;
+            this.world[x][y].color = 0;
+            this.population[0]++;
         }, this);
     }
     /* ================== End of Life class ================ */
@@ -373,6 +379,7 @@ $(document).ready(function() {
         this.cols = this.w / this.cellSize;
         this.rulename = "GAME_OF_LIFE";
         this.rule = { B:[], S:[] };
+        this.nColors = 2;
         this.trace = true;
         this.halt = true;
 
@@ -387,7 +394,7 @@ $(document).ready(function() {
         this.$pencil_btn.prop('disabled', true);
         this.$eraser_btn.prop('disabled', false);
         this.paintGrid();
-        this.life = new Life (this.rows, this.cols, null);
+        this.life = new Life (this.rows, this.cols, null, this.nColors);
         this.setRule (this.rulename);
         this.life.load(this.Lifeforms["GOSPER_GLIDER_GUN"]);
         this.paint();
