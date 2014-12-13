@@ -130,10 +130,11 @@ $(document).ready(function() {
             for (var y = 0; y < this.rows; ++y) {
                 var ncounts = this.getNeighbourCount(x, y);
                 if (this.world[x][y].alive) {
-                    var max = -1, candidates = [];
+                    var max = -1, candidates = [], ntotal = 0;
                     for (var i = 0; i < this.nColors; ++i) {
                         var ncount = ncounts[i];
-                        if (this.S.indexOf(ncount) != -1) {
+                        ntotal += ncount;
+                        //if (this.S.indexOf(ncount) != -1) {
                             if (ncount > max) {
                                 candidates = [];
                                 max = ncount;
@@ -142,9 +143,10 @@ $(document).ready(function() {
                             else if (ncount == max) {
                                 candidates.push( {color: i, count: ncount} );
                             }
-                        }
+                        //}
                     }
-                    if (candidates.length > 0) {
+                    //if (candidates.length > 0) {
+                    if (this.S.indexOf(ntotal) != -1) {
                         var r = Math.floor(Math.random() * candidates.length);
                         var color = candidates[r].color;
                         this.world2[x][y].alive = true;
@@ -158,10 +160,11 @@ $(document).ready(function() {
                     }
                 }
                 else {
-                    var max = -1, candidates = [];
+                    var max = -1, candidates = [], ntotal = 0;
                     for (var i = 0; i < this.nColors; ++i) {
                         var ncount = ncounts[i];
-                        if (this.B.indexOf(ncount) != -1) {
+                        ntotal += ncount;
+                        //if (this.B.indexOf(ncount) != -1) {
                             if (ncount > max) {
                                 candidates = [];
                                 max = ncount;
@@ -170,9 +173,10 @@ $(document).ready(function() {
                             else if (ncount == max) {
                                 candidates.push( {color: i, count: ncount} );
                             }
-                        }
+                        //}
                     }
-                    if (candidates.length > 0) {
+                    //if (candidates.length > 0) {
+                    if (this.B.indexOf(ntotal) != -1) {
                         var r = Math.floor(Math.random() * candidates.length);
                         var color = candidates[r].color;
                         this.world2[x][y].alive = true;
