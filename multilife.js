@@ -207,10 +207,11 @@ $(document).ready(function() {
         lifeFormData.points.forEach(function(point) {
             var x = point[0] + dx;
             var y = point[1] + dy;
+            var color = Math.floor(Math.random() * this.nColors); // Random colored cell, Change later
             this.world[x][y].alive = true;
             this.world[x][y].age = 1;
-            this.world[x][y].color = 0;
-            this.population[0]++;
+            this.world[x][y].color = color;
+            this.population[color]++;
         }, this);
     }
     /* ================== End of Life class ================ */
@@ -363,6 +364,7 @@ $(document).ready(function() {
         this.bgColor = '#FFFFFF';
         this.palette_idx = 0;
         this.Palette = this.Palettes[this.palette_idx];
+        this.CellColors = ['#000', 'red', 'blue', 'green']; 
         this.gridStroke = 0.5;
         this.frameDelay = 120; // ms
         this.frameTimer;
@@ -379,7 +381,7 @@ $(document).ready(function() {
         this.cols = this.w / this.cellSize;
         this.rulename = "GAME_OF_LIFE";
         this.rule = { B:[], S:[] };
-        this.nColors = 2;
+        this.nColors = 3;
         this.trace = true;
         this.halt = true;
 
@@ -557,17 +559,17 @@ $(document).ready(function() {
             for (var y = 0; y < this.rows; ++y) {
                 var cell = this.life.get(x,y);
                 if (cell.alive) {
-                    this.world_ui.fillStyle = this.cellColor;
+                    this.world_ui.fillStyle = this.CellColors[cell.color];
                     this.world_ui.beginPath();
                     this.world_ui.rect(x*this.cellSize, y*this.cellSize, this.cellSize, this.cellSize);
                     this.world_ui.fill();
                 }
-                else if (this.trace && cell.age < 0) {
+                /*else if (this.trace && cell.age < 0) {
                     this.world_ui.fillStyle = this.Palette[-cell.age];
                     this.world_ui.beginPath();
                     this.world_ui.rect(x*this.cellSize, y*this.cellSize, this.cellSize, this.cellSize);
                     this.world_ui.fill();
-                }
+                } */
             }
         }
         this.$generation_ui.text(this.life.generation);
