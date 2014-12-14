@@ -1,7 +1,8 @@
 /*
- * Javascript implementation of Conway's Game of Life 
+ * Javascript implementation of Conway's Game of Life and other cellular automata
+ * Extended to include
  *
- * Author: Rahul Anand [ eternalthinker.co ], Nov 2014
+ * Author: Rahul Anand [ eternalthinker.co ], Dec 2014
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11,14 +12,14 @@
 
 $(document).ready(function() {
 
-    /* ================== Life class ================ */
+    /* ================== MultiLife class ================ */
     function Cell () {
         this.age = 0; // Determines generation color
         this.alive = false;
         this.color = -1;
     }
     
-    function Life (rows, cols, rule, nColors) {
+    function MultiLife (rows, cols, rule, nColors) {
         if (rule) {
             this.B = rule.B; // B(orn)
             this.S = rule.S; // S(tay alive)
@@ -37,12 +38,13 @@ $(document).ready(function() {
         for (var i = 0; i < this.nColors; ++i) {
             this.population[i] = 0;
         }
+        this.population_t = 0;
 
         // Actions
         this.init();
     }
 
-    Life.prototype.init = function () {
+    MultiLife.prototype.init = function () {
         // Initialize world cells
         for (var x = 0; x < this.cols; ++x) {
             this.world[x] = [];
@@ -54,38 +56,64 @@ $(document).ready(function() {
         }
     }
 
-    Life.prototype.get = function (x, y) {
+    MultiLife.prototype.get = function (x, y) {
         return this.world[x][y];
     }
 
-    Life.prototype.set = function (x, y, color) {
+    MultiLife.prototype.set = function (x, y, color) {
         this.world[x][y].alive = true;
         this.world[x][y].age = 1;
         this.world[x][y].color = color;
     }
 
-    Life.prototype.unset = function (x, y) {
+    MultiLife.prototype.unset = function (x, y) {
         this.world[x][y].alive = false;
         this.world[x][y].age = -1;
         this.world[x][y].color = -1;
     }
 
-    Life.prototype.setRule = function (rule) {
+    MultiLife.prototype.setRule = function (rule) {
         this.B = rule.B;
         this.S = rule.S;
     }
 
-    Life.prototype.clear = function () {
+    MultiLife.prototype.clear = function () {
         for (var x = 0; x < this.cols; ++x) {
             for (var y = 0; y < this.rows; ++y) {
                 this.world[x][y].alive = false;
                 this.world[x][y].age = 0;
+                this.world[x][y].color = -1;
             }
         }
         this.generation = 0;
     }
 
-    Life.prototype.getNeighbourCount = function (x, y) {
+    MultiLife.prototype.randomfill = function() {
+        this.generation = 0;
+        this.population_t = 0;
+        for (var i = 0; i < this.nColors; ++i) {
+            this.population[i] = 0;
+        }
+        for (var x = 0; x < this.cols; ++x) {
+            for (var y = 0; y < this.rows; ++y) {
+                var alive = Math.floor(Math.random()*4) < 1; // 25% or 1/4 alive
+                if (alive) {
+                    this.population_t++;
+                    this.world[x][y].alive = true;
+                    this.world[x][y].age = 1;
+                    this.world[x][y].color = Math.floor(Math.random()*this.nColors);
+                    this.population[this.world[x][y].color]++;
+                } else {
+                    this.world[x][y].alive = false;
+                    this.world[x][y].age = 0;
+                    this.world[x][y].color = -1;
+                }
+                
+            }
+        }
+    }
+
+    MultiLife.prototype.getNeighbourCount = function (x, y) {
         var ncounts = [];
         for (var i = 0; i < this.nColors; ++i) {
             ncounts[i] = 0;
@@ -122,39 +150,22 @@ $(document).ready(function() {
         return ncounts;
     }
 
-    Life.prototype.step = function () {
+    MultiLife.prototype.step = function () {
         for (var i = 0; i < this.population.length; ++i) {
             this.population[i] = 0;
         }
+        this.population_t = 0;
         for (var x = 0; x < this.cols; ++x) {
             for (var y = 0; y < this.rows; ++y) {
                 var ncounts = this.getNeighbourCount(x, y);
                 if (this.world[x][y].alive) {
-                    /*var max = -1, candidates = [], ntotal = 0;
-                    for (var i = 0; i < this.nColors; ++i) {
-                        var ncount = ncounts[i];
-                        ntotal += ncount;
-                        //if (this.S.indexOf(ncount) != -1) {
-                            if (ncount > max) {
-                                candidates = [];
-                                max = ncount;
-                                candidates.push( {color: i, count: ncount} );
-                            }
-                            else if (ncount == max) {
-                                candidates.push( {color: i, count: ncount} );
-                            }
-                        //}
-                    }*/
-                    //if (candidates.length > 0) {
-                    //if (this.S.indexOf(ntotal) != -1) {
                     if (this.S.indexOf( ncounts[this.world[x][y].color] ) != -1) {
-                        //var r = Math.floor(Math.random() * candidates.length);
-                        //var color = candidates[r].color;
                         var color = this.world[x][y].color;
                         this.world2[x][y].alive = true;
                         this.world2[x][y].color = color;
                         this.world2[x][y].age = 1;
                         this.population[color]++;
+                        this.population_t++;
                     } else {
                         this.world2[x][y].alive = false;
                         this.world2[x][y].color = -1;
@@ -178,21 +189,17 @@ $(document).ready(function() {
                         }
                     }
                     if (candidates.length > 0) {
-                    //if (this.B.indexOf(ntotal) != -1) {
                         var r = Math.floor(Math.random() * candidates.length);
                         var color = candidates[r].color;
                         this.world2[x][y].alive = true;
                         this.world2[x][y].color = color;
                         this.world2[x][y].age = 1; // It's alive!
                         this.population[color]++;
+                        this.population_t++;
                     } else {
                         this.world2[x][y].alive = false;
                         this.world2[x][y].color = -1;
-                        var age = this.world[x][y].age;
-                        if (age < 0 && age > -5) { // Dead and rotting
-                            age--; 
-                        }
-                        this.world2[x][y].age = age;
+                        this.world2[x][y].age = this.world[x][y].age;
                     }
                 }
 
@@ -205,37 +212,18 @@ $(document).ready(function() {
         this.world2 = temp;
         this.generation++;
     }
-        
-    Life.prototype.load = function (lifeFormData) {
-        var dx = lifeFormData.offsetX;
-        var dy = lifeFormData.offsetY;
-        this.population = 0;
-        lifeFormData.points.forEach(function(point) {
-            var x = point[0] + dx;
-            var y = point[1] + dy;
-            var color = Math.floor(Math.random() * this.nColors); // Random colored cell, Change later
-            this.world[x][y].alive = true;
-            this.world[x][y].age = 1;
-            this.world[x][y].color = color;
-            this.population[color]++;
-        }, this);
-    }
-    /* ================== End of Life class ================ */
+    /* ================== End of MultiLife class ================ */
 
 
     /* ================== Ui class ================ */
-    function Ui (Rules, Lifeforms, Palettes) {
+    function Ui (Rules) {
         this.Rules = Rules;
-        this.Lifeforms = Lifeforms;
-        this.Palettes = Palettes;
 
         // Ui components
         this.$run_btn = $('#run');
         this.$step_btn = $('#step');
         this.$pause_btn = $('#pause');
-        this.$pencil_btn = $('#pencil');
-        this.$eraser_btn = $('#eraser');
-        this.$clear_btn = $('#clear');
+        this.$reset_btn = $('#reset');
         this.$slider_ui = $('#slider');
         this.slider_values = [1000, 250, 120, 70, 10];
         this.$trace_chk = $('#trace-switch');
@@ -246,7 +234,6 @@ $(document).ready(function() {
         this.$generation_ui = $('#generation');
         this.$population_ui = $('#population');
         this.$rules_sel = $('#rules');
-        this.$lifeform_sel = $('#lifeforms');
         this.$brule_ip = $('#b-rule');
         this.$srule_ip = $('#s-rule');
 
@@ -254,17 +241,7 @@ $(document).ready(function() {
         this.$run_btn.click($.proxy(this.run, this));
         this.$step_btn.click($.proxy(this.step_update, this));
         this.$pause_btn.click($.proxy(this.pause, this)); 
-        this.$pencil_btn.click($.proxy(function() {
-            this.curTool = this.Tool.PENCIL;
-            this.$pencil_btn.prop('disabled', true);
-            this.$eraser_btn.prop('disabled', false);
-        }, this));
-        this.$eraser_btn.click($.proxy(function() {
-            this.curTool = this.Tool.ERASER;
-            this.$pencil_btn.prop('disabled', false);
-            this.$eraser_btn.prop('disabled', true);
-        }, this));
-        this.$clear_btn.click($.proxy(this.clearWorld, this));
+        this.$reset_btn.click($.proxy(this.reset, this));
 
         if (this.$slider_ui.length > 0) {
           this.$slider_ui.slider({
@@ -278,16 +255,7 @@ $(document).ready(function() {
             }, this)
           }).addSliderSegments(this.$slider_ui.slider("option").max);
         }
-        $('#palette').click($.proxy(function () {
-            this.rotatePalette();
-        }, this));
-        this.$trace_chk.bootstrapSwitch('state', true);
-        this.$trace_chk.on('switchChange.bootstrapSwitch', $.proxy(function (event, state) {
-          this.trace = state;
-          if (this.halt) {
-            this.paint();
-          }
-        }, this));
+
         this.$grid_chk.bootstrapSwitch('state', true);
         this.$grid_chk.on('switchChange.bootstrapSwitch', $.proxy(function (event, state) {
           if (state) {
@@ -310,6 +278,7 @@ $(document).ready(function() {
                 this.$srule_ip.prop('disabled', false).parent().addClass('has-success');
             }
         }, this));
+
         this.$brule_ip.on('input', $.proxy(function (event) {
             var B = this.parseRule(this.$brule_ip.val());
             if (B) {
@@ -332,34 +301,10 @@ $(document).ready(function() {
                 this.$srule_ip.parent().removeClass('has-success').addClass('has-error');
             }
         }, this));
-        this.$lifeform_sel.on('change', $.proxy(function (event) {
-            if (event.val !== "NONE") {
-                this.loadLifeform(event.val);
-            }
-        }, this));
 
         $(window).blur($.proxy(function () {
             this.halt || this.pause();
         }, this));
-
-        // Mouse handlers
-        this.$grid_cnvs.mousedown($.proxy(function (event) { this.onMouseDown(event); }, this));
-        this.$grid_cnvs.mouseup($.proxy(function (event) { this.onMouseUp(event); }, this));
-        this.$grid_cnvs.mousemove($.proxy(function (event) { this.onMouseMove(event); }, this));
-        this.$grid_cnvs.mouseout($.proxy(function (event) { this.onMouseOut(event); }, this));
-        this.$world_cnvs.mousedown($.proxy(function (event) { this.onMouseDown(event); }, this));
-        this.$world_cnvs.mouseup($.proxy(function (event) { this.onMouseUp(event); }, this));
-        this.$world_cnvs.mousemove($.proxy(function (event) { this.onMouseMove(event); }, this));
-        this.$world_cnvs.mouseout($.proxy(function (event) { this.onMouseOut(event); }, this));
-
-        // Drawing related variables
-        this.drawing = false;
-        this.dragging = false;
-        this.Tool = Object.freeze({
-            PENCIL: 1,
-            ERASER: 2
-        });
-        this.curTool = this.Tool.PENCIL;
 
         // Life appearance variables
         this.w = 750;
@@ -368,9 +313,8 @@ $(document).ready(function() {
         this.cellColor = '#000000';
         this.gridColor = '#CCCCCC';
         this.bgColor = '#FFFFFF';
-        this.palette_idx = 0;
-        this.Palette = this.Palettes[this.palette_idx];
-        this.CellColors = ['#000', 'red', 'blue', 'green']; 
+        //this.CellColors = ['#6C7A89', '#DC3023', '#22A7F0', '#5B8930']; 
+        this.CellColors = ['#F22613', '#FFA631', '#26A65B', '#4B77BE'];
         this.gridStroke = 0.5;
         this.frameDelay = 120; // ms
         this.frameTimer;
@@ -387,7 +331,7 @@ $(document).ready(function() {
         this.cols = this.w / this.cellSize;
         this.rulename = "GAME_OF_LIFE";
         this.rule = { B:[], S:[] };
-        this.nColors = 3;
+        this.nColors = 4;
         this.trace = true;
         this.halt = true;
 
@@ -395,25 +339,14 @@ $(document).ready(function() {
         this.$rules_sel.select2('val', this.rulename);
         this.$brule_ip.prop('disabled', true).parent().removeClass('has-error').removeClass('has-success');
         this.$srule_ip.prop('disabled', true).parent().removeClass('has-error').removeClass('has-success');
-        this.$lifeform_sel.select2('val', 'GOSPER_GLIDER_GUN');
         this.$run_btn.prop('disabled', false);
         this.$step_btn.prop('disabled', false);
         this.$pause_btn.prop('disabled', true);
-        this.$pencil_btn.prop('disabled', true);
-        this.$eraser_btn.prop('disabled', false);
         this.paintGrid();
-        this.life = new Life (this.rows, this.cols, null, this.nColors);
+        this.life = new MultiLife (this.rows, this.cols, null, this.nColors);
         this.setRule (this.rulename);
-        this.life.load(this.Lifeforms["GOSPER_GLIDER_GUN"]);
+        this.life.randomfill();
         this.paint();
-    }
-
-    Ui.prototype.rotatePalette = function () {
-        this.palette_idx = (this.palette_idx + 1) % this.Palettes.length;
-        this.Palette = this.Palettes[this.palette_idx];
-        if (this.halt) {
-            this.paint();
-        }
     }
 
     Ui.prototype.parseRule = function (value) {
@@ -442,108 +375,18 @@ $(document).ready(function() {
         this.rulename = rulename;
     }
 
-    Ui.prototype.loadLifeform = function (name) {
-        this.pause();
-        this.life.clear();
-        this.life.load(this.Lifeforms[name]);
-        this.paint();
-    }
-
-    Ui.prototype.getPixelpoint = function (coords) {
-        //return { x: Math.floor(coords.x/this.cellSize), y: Math.floor(coords.y/this.cellSize) };
-        // Fine tuning pixel drawing at edges: (10,10) -> (1,1) for cellSize=5
-        return { x: Math.floor(coords.x/this.cellSize) - (coords.x%this.cellSize?0:1), 
-                 y: Math.floor(coords.y/this.cellSize) - (coords.y%this.cellSize?0:1) 
-               };
-    }
-
-    Ui.prototype.onMouseDown = function (event) {
-        event.originalEvent.preventDefault(); // Chrome drag text cursor fix
-        this.drawing = true;
-        // var point = this.getPixelpoint(this.world_cnvs.relMouseCoords(event));
-    }
-
-    Ui.prototype.onMouseUp = function (event) {
-        if (this.drawing) {
-            this.drawing = false;
-            if (this.dragging) { // No mouse up action if mouse was being dragged
-                this.dragging = false;
-            }
-            else {
-                var point = this.getPixelpoint(this.world_cnvs.relMouseCoords(event));
-                if (this.curTool === this.Tool.PENCIL) {
-                    var ievent = this.world_cnvs.relMouseCoords(event);
-                    //console.log ("(" + ievent.x + ", " + ievent.y + ") -> " + "(" + point.x + ", " + point.y + ")");
-                    if (! this.life.get(point.x, point.y).alive) {
-                        this.setCell(point.x, point.y);
-                    } else {
-                        this.unsetCell(point.x, point.y); // Live cell; click to unset
-                    }
-                }
-                else { // this.curTool.ERASER
-                    this.unsetCell(point.x, point.y);
-                }
-            }
-        }
-    }
-
-    Ui.prototype.onMouseMove = function (event) {
-        if (this.drawing) {
-            this.dragging = true;
-            var point = this.getPixelpoint(this.world_cnvs.relMouseCoords(event));
-            if (this.curTool === this.Tool.PENCIL) {
-                this.setCell(point.x, point.y);
-            }
-            else { // this.curTool.ERASER
-                this.unsetCell(point.x, point.y);
-            }
-        }
-    }
-
-    Ui.prototype.onMouseOut = function (event) {
-        if (this.drawing) {
-            this.drawing = false;
-            this.dragging = false;
-            // var point = this.getPixelpoint(this.world_cnvs.relMouseCoords(event));
-        }
-    }
-
-    Ui.prototype.setCell = function (x, y) {
-        if (this.life.get(x,y).alive) return;
-        this.life.set(x, y);
-        this.world_ui.fillStyle = this.cellColor;
-        this.world_ui.beginPath();
-        this.world_ui.rect(x*this.cellSize, y*this.cellSize, this.cellSize, this.cellSize);
-        this.world_ui.fill();
-    }
-
-    Ui.prototype.unsetCell = function (x, y) {
-        if (! this.life.get(x,y).alive) return;
-        this.life.unset(x, y);
-        if (this.trace) {
-            this.world_ui.fillStyle = this.Palette[1]; // Age always -1 after unset()
-            this.world_ui.beginPath();
-            this.world_ui.rect(x*this.cellSize, y*this.cellSize, this.cellSize, this.cellSize);
-            this.world_ui.fill();
-        }
-        else {
-            this.world_ui.clearRect(x*this.cellSize, y*this.cellSize, this.cellSize, this.cellSize);
-        }
-    }
-
-    Ui.prototype.clearWorld = function (x, y) {
-        this.pause();
-        this.life.clear();
-        this.$lifeform_sel.select2('val', 'NONE');
-        this.paint();
-    }
-
     Ui.prototype.run = function () {
         this.update();
         this.$run_btn.prop('disabled', true);
         this.$step_btn.prop('disabled', true);
         this.$pause_btn.prop('disabled', false);
         this.halt = false;
+    }
+
+    Ui.prototype.reset = function () {
+        this.pause();
+        this.life.randomfill();
+        this.paint();
     }
 
     Ui.prototype.step_update = function () {
@@ -570,16 +413,10 @@ $(document).ready(function() {
                     this.world_ui.rect(x*this.cellSize, y*this.cellSize, this.cellSize, this.cellSize);
                     this.world_ui.fill();
                 }
-                /*else if (this.trace && cell.age < 0) {
-                    this.world_ui.fillStyle = this.Palette[-cell.age];
-                    this.world_ui.beginPath();
-                    this.world_ui.rect(x*this.cellSize, y*this.cellSize, this.cellSize, this.cellSize);
-                    this.world_ui.fill();
-                } */
             }
         }
         this.$generation_ui.text(this.life.generation);
-        this.$population_ui.text(this.life.population);
+        this.$population_ui.text(this.life.population_t);
     }
 
     Ui.prototype.update = function () {
@@ -634,27 +471,6 @@ $(document).ready(function() {
             }
         });
     };
-
-    // Retrieve mouse coordinates relative to the canvas element
-    function relMouseCoords(event){
-        var totalOffsetX = 0;
-        var totalOffsetY = 0;
-        var canvasX = 0;
-        var canvasY = 0;
-        var currentElement = this;
-
-        do {
-            totalOffsetX += currentElement.offsetLeft - currentElement.scrollLeft;
-            totalOffsetY += currentElement.offsetTop - currentElement.scrollTop;
-        }
-        while(currentElement = currentElement.offsetParent);
-
-        canvasX = event.pageX - totalOffsetX;
-        canvasY = event.pageY - totalOffsetY;
-
-        return {x:canvasX, y:canvasY};
-    }
-    HTMLCanvasElement.prototype.relMouseCoords = relMouseCoords;
     /* ================== End of Utilities ================ */
 
     /* ================== Essential definitions ================ */
@@ -665,38 +481,9 @@ $(document).ready(function() {
         "MAZE"                  : { B:[3], S:[1, 2, 3, 4, 5] },
         "SEEDS"                 : { B:[2], S:[] },
     });
-
-    var Palettes = [
-        ['', '#BDBDBD', '#D8D8D8', '#E6E6E6', '#F2F2F2', '#FAFAFA'],
-        ['', '#F78181', '#F5A9A9', '#F6CECE', '#F8E0E0', '#FBEFEF'],
-        ['', '#81BEF7', '#A9D0F5', '#CEE3F6', '#E0ECF8', '#EFF5FB']
-    ];
-
-    var Lifeforms = {};
-
-    var lifeformsData = [
-        'gosper_glider_gun',
-        'dragon',
-        'snail',
-        'weekender_tagalong',
-        'queen_bee_loop',
-        'gliders_by_the_dozen',
-        'bomber_predecessor',
-        'replicator'
-    ];
     /* ================== End of Essential definitions ================ */
 
     // Actions
-    var rle = new Rle();
-    lifeformsData.forEach(function(filename) {
-        $.get("lifeforms/" + filename + ".rle", function (data) {
-            Lifeforms[filename.toUpperCase()] = rle.parse(data);
-        }, "text");
-    });
-
-    var ui;
-    $(document).ajaxStop(function() {
-        ui = new Ui(Rules, Lifeforms, Palettes);
-    });
+    var ui = new Ui(Rules);
 
 });

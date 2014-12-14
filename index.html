@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="john horton conway, game of life, cellular automaton, life without death, highlife, maze, seeds, torus" />
-    <meta name="description" content="Conway's Game of Life and other cellular automata" />
+    <meta name="keywords" content="multi life, multiple colours, john horton conway, game of life, cellular automaton, life without death, highlife, maze, seeds, torus" />
+    <meta name="description" content="Conway's Game of Life and other cellular automata with multi colored life forms" />
     <meta name="author" content="Rahul Anand <eternalthinker>" />
     <meta name="copyright" content="Apache 2.0" />
     <title>Game of Life</title>
@@ -36,8 +36,8 @@
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="main-navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Game of Life</a>
-        <p class="navbar-text hidden-sm hidden-xs">A cellular automata simulator</p>
+        <a class="navbar-brand" href="#">Multi Life</a>
+        <p class="navbar-text hidden-sm hidden-xs">A cellular automata simulator with multiple life forms</p>
         <p class="navbar-text visible-sm-inline-block hidden-xs">Cellular automata fun!</p>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navigation-collapse-content">
           <span class="sr-only">Toggle navigation</span>
@@ -51,7 +51,7 @@
           <li><a href="#about">?</a></li>
           <li><a href="http://eternal-thinker.com/">Home</a></li>
           <li><a href="http://github.com/eternalthinker">Github</a></li>
-          <li><a href="https://github.com/eternalthinker/gameoflife/fork">Fork</a></li>
+          <li><a href="https://github.com/eternalthinker/multilife">Source</a></li>
         </ul>
       </div>
     </div>
@@ -88,18 +88,7 @@
             <button type="button" id="run" class="btn btn-default btn-success"><span class="fui-play"></span></button>
             <button type="button" id="step" class="btn btn-default btn-primary"><span class="fui-arrow-right"></span></button>
             <button type="button" id="pause" class="btn btn-default btn-warning mrl" disabled><span class="fui-pause"></span></button>
-            
-            <div class="btn-group" role="toolbar" aria-label="toolbar">
-            <button type="button" id="pencil" class="btn btn-default btn-info" disabled>
-              <span class="icon-pencil"></span>
-            </button>
-            <button type="button" id="eraser" class="btn btn-default btn-inverse">
-              <span class="icon-eraser"></span>
-            </button>
-            <button type="button" id="clear" class="btn btn-default btn-danger">
-              <span class="icon-clear"></span>
-            </button>
-            </div>
+            <button type="button" id="reset" class="btn btn-default btn-danger"><span class="fui-cross-circle"></span></button>
             <hr/>
           </div>
         </div>
@@ -112,32 +101,6 @@
             <label style="margin-top:0px;" class="mrdl">Grid</label>
             <input type="checkbox" checked data-toggle="switch" name="default-switch-colors" data-on-color="primary" data-off-color="default" id="grid-switch"/>
 
-            <label style="margin-top:0px;" class="mll">Trace</label>
-            <input type="checkbox" checked data-toggle="switch" name="default-switch-colors" data-on-color="primary" data-off-color="default" id="trace-switch" />
-
-            <button type="button" id="palette" class="btn btn-default btn-primary btn-sm mll">Color <span class="fui-star"></span></button>
-            <hr/>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <label style="margin-top:0px;" class="mrl">Life forms</label>
-            <select class="form-control select select-primary select-block" id="lifeforms">
-              <option value="NONE">Select a lifeform to load</option>
-              <optgroup label="Game of Life">
-                <option value="GOSPER_GLIDER_GUN">Gosper Glider Gun</option>
-                <option value="SNAIL">Snail</option>
-                <option value="DRAGON">Dragon</option>
-                <option value="WEEKENDER_TAGALONG">Weekender tagalong</option>
-                <option value="QUEEN_BEE_LOOP">Queen bee Loop</option>
-                <option value="GLIDERS_BY_THE_DOZEN">Gliders by the dozen</option>
-              </optgroup>
-              <optgroup label="HighLife">
-                <option value="REPLICATOR">Replicator</option>
-                <option value="BOMBER_PREDECESSOR">Bomber Predecessor</option>
-              </optgroup>
-            </select>
             <hr/>
           </div>
         </div>
@@ -186,42 +149,24 @@
         <section>
           <h3>About</h3>
           <p>
-            <em>Game of Life</em> is a cellular automaton devised by the British Mathematician John Horton Conway in 1970. 
-            <small><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">[Wikipedia link]</a></small><br>
-          </p>
-          <p>
-            Here the world consists of a grid of cells, with some of them being <em>alive</em>. 
-            A dead cell comes alive, or is <strong>B</strong>orn, if it has exactly 3 immediate live neighbours. Similarly, a live cell survives to the next generation, or
-            <strong>S</strong>tay alive, if it has 2 to 3 neighbours; It will die if the neighbour count in any lesser or greater. This is abbreviated as the 
-            <strong>B</strong>3/<strong>S</strong>23 rule.<br>
-          </p>
-          <p>
-            The game starts with an initial configuration of live cells, and evolves into different patterns in subsequent generations according to these simple rules.
-            Despite the short rules, the evolution of an initial pattern can be surprising.<br>
-            There are variations of <em>Game of Life</em>, created by changes in the B/S rule. Seemingly small changes in the rule can give rise to an evolution pattern
-            that is drastically different. There is the charmingly structured <em>Maze</em> and the explosive <em>Seeds</em>. For examples, check out other game rules in the above interface.
+            This is a cellular automata simulator which supports multiple life types (represented by different coloured cells). 
+            It can support rules of Conway's Game of Life and various other automata. For more info on these, check the 
+            <a href="http://eternalthinker.github.io/gameoflife#about" target="_blank">classic implementation</a>.
           </p>
         </section>
 
         <section>
-          <h4>Life forms</h4>
+          <h4>Implementation</h4>
           <p>
-            There are several naturally occuring and cleverly engineered patterns disovered in different cellular automata rules. Static life forms which do not move, yet 
-            do not die out, life forms which are static yet <em>pulse</em> in their current position with various intervals, and Spaceships which are patterns which keep moving in one direction, not unlike what is imagined of spaceships.<br>
-            Check some examples in the above interface. Note that, a pattern shows its guaranteed behaviour only in its native set of rules.
-          </p>
-        </section>
-
-        <section>
-          <h4>Implementation Details</h4>
-          <p>
-            In the original definition, a cellular automaton consists of an infinite grid of cells, growing in all directions. Above implementation uses a toroidal grid,
-            meaning the top and bottom are virtually stitched together, and similarly the left and right sides. So a cell which moves past the right end, continues from the 
-            beginning of left end. This enables an infinite world of sorts, except that moving cells can collide with existing cells unlike an infinite universe.
+            This is mostly a fancy implementation. There are multiple ways to choose from in deciding how to handle collisions of two life types (colours).
+            Neighbours of only the same colour, or all colours may be considered. A colour may or may not overwrite a cell with another live colour. All the different combinations of these decisions lead to different behaviour in which the coloured cells evolve and combine, survive or go extinct.
           </p>
           <p>
-            The implementation also uses a naive implementation of rules. More optimized algorithms for <em>Game of Life</em> include Listlife and Hashlife.<br>
-            <em>PS: Turn off Trace (colored trail) in the interface if a crowded grid is making the simulation slower.</em>
+            The above implementation has the following logic for the B/S rules:<br>
+            <ul>
+                <li><strong>B rule: </strong>Counts of individual colours around a dead cell is determined. Colour which has optimum count, and is the majority, spawns. In case of tie, a fair random selection is used.</li>
+                <li><strong>S rule: </strong>A live coloured cell live on if there is an optimum number of neighbouring cells of the same colour.</li>
+            </ul>
           </p>
         </section>
 
